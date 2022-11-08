@@ -1,0 +1,14 @@
+.review {
+    background-color: rgb(33,37,41);
+    padding: 20px;
+    border-radius: 6px;
+}
+.review-user {
+    display: flex;
+}
+.review-user img {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    margin-right: 20px;
+}
