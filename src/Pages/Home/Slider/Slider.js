@@ -14,7 +14,7 @@ const Slider = () => {
                 />
                 <Carousel.Caption>
                     <h3>Welcome !</h3>
-                    <p>I am <span>Dr. Abu Mohammad</span></p>
+                    <p>I am <span>Dr. Mohammad</span></p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -25,7 +25,7 @@ const Slider = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3>A Dental Specialist</h3>
+                    <h3>I'm a Dental Specialist</h3>
                     <p>
                         Checkout my services
                     </p>

@@ -9,7 +9,7 @@ import './Header.css';
 
 const Header = () => {
     return (
-        <Navbar bg="light" className='shadow-sm' expand="lg">
+        <Navbar className='shadow-sm primary_bg' expand="lg">
             <Container>
                 <Navbar.Brand>
                     <Link to='/' className='custom-brand'>
@@ -19,12 +19,12 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <NavLink className='btn' to='/'>Home</NavLink>
-                        <NavLink className='btn' to='/services'>Services</NavLink>
-                        <NavLink className='btn' to='/addService'>Add Services</NavLink>
-                        <NavLink className='btn' to='/myReview'>My Reviews</NavLink>
-                        <NavLink className='btn' to='/signup'>Sign Up</NavLink>
-                        <NavLink className='btn' to='/login'>Log In</NavLink>
+                        <NavLink className='primary_btn_custom' to='/'>Home</NavLink>
+                        <NavLink className='primary_btn_custom' to='/services'>Services</NavLink>
+                        <NavLink className='primary_btn_custom' to='/addService'>Add Services</NavLink>
+                        <NavLink className='primary_btn_custom' to='/myReview'>My Reviews</NavLink>
+                        <NavLink className='primary_btn_custom' to='/signup'>Sign Up</NavLink>
+                        <NavLink className='primary_btn_custom' to='/login'>Log In</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

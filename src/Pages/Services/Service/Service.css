@@ -3,10 +3,17 @@
     padding: 20px;
     border-radius: 6px;
 }
+.service_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.service_text_box {
+    width: 60%;
+}
 .my-card img {
-    width: 100%;
+    width: 35%;
     border-radius: 6px;
-    margin-bottom: 20px;
 }
 .my-card h2 {
     font-size: 24px;
@@ -16,4 +23,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 16px;
+}
+
+@media screen and (max-width: 576px){
+    .service_box {
+        display: block;
+    }
+    .my-card img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .service_text_box {
+        width: 100%;
+    }
 }
