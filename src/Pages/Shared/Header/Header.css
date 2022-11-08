@@ -1,0 +1,14 @@
+.custom-brand {
+    text-decoration: none;
+    font-weight: 600;
+    color: #3eb0e1;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+}
+.custom-brand:hover {
+    color: #3eb0e1;
+}
+.custom-brand img {
+    height: 40px;
+}
