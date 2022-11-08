@@ -14,7 +14,7 @@ const Slider = () => {
                 />
                 <Carousel.Caption>
                     <h3>Welcome !</h3>
-                    <p>I am <span>Dr. Mohammad</span></p>
+                    <p>I am <span className='text-danger'>Dr. Mohammad</span></p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>

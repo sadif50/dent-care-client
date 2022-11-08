@@ -16,6 +16,9 @@ code {
 .primary_bg {
   background-color: #37474F;
 }
+.secondary_bg {
+  background-color: #633e39 !important;
+}
 .primary_btn_custom {
   text-decoration: none;
   background-color: #37474F;
