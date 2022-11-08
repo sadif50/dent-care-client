@@ -3,6 +3,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import Service from '../../Services/Service/Service';
+import { PhotoProvider } from 'react-photo-view';
+
 
 
 
@@ -29,9 +31,11 @@ const ServiceSection = () => {
                         </p>
                     </div>
                 </Col>
+                <PhotoProvider>
                 {
-                    services.map(service => <Service key={service._id} service={service}></Service>)
+                    services.map((service, index) => <Service key={service._id} index={index} service={service}></Service>)
                 }
+                </PhotoProvider>
             </Row>
             <div className='text-center mt-3'>
                 <Link to='/services' className='primary_btn_custom py-2 px-5'>

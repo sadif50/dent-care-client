@@ -14,12 +14,12 @@ const Footer = () => {
                             <img src={logo} alt="" /> <span>Dent Care</span>
                         </Link>
                     </div>
-                    <div className='d-flex justify-content-center'>
-                        <Link className='text-white text-decoration-none mx-3'>About</Link>
-                        <Link className='text-white text-decoration-none mx-3'>Blogs</Link>
-                        <Link className='text-white text-decoration-none mx-3'>Terms & Conditions</Link>
-                        <Link className='text-white text-decoration-none mx-3'>Privacy Policy</Link>
-                        <Link className='text-white text-decoration-none mx-3'>Support</Link>
+                    <div className='d-flex justify-content-center flex-wrap'>
+                        <Link className='text-white text-decoration-none mx-3 mb-3 mb-md-0'>About</Link>
+                        <Link className='text-white text-decoration-none mx-3 mb-3 mb-md-0'>Blogs</Link>
+                        <Link className='text-white text-decoration-none mx-3 mb-3 mb-md-0'>Terms & Conditions</Link>
+                        <Link className='text-white text-decoration-none mx-3 mb-3 mb-md-0'>Privacy Policy</Link>
+                        <Link className='text-white text-decoration-none mx-3 mb-3 mb-md-0'>Support</Link>
                     </div>
                 </div>
 

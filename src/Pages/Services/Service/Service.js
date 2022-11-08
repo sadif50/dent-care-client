@@ -1,15 +1,19 @@
 import React from 'react';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
+import { PhotoView } from 'react-photo-view';
 import './Service.css';
 
-const Service = ({ service }) => {
+const Service = ({ service, index }) => {
     const { _id, title, img, rating, price, description } = service;
     return (
         <Col lg={6} className='mb-4'>
             <div className='my-card'>
                 <div className='service_box'>
-                    <img src={img} alt="" />
+                    <PhotoView key={index} src={img}>
+                        <img src={img} alt="" />
+                    </PhotoView>
+
                     <div className='service_text_box'>
                         <h2>{title}</h2>
                         <p className='d-flex justify-content-between align-items-end mb-2'>
