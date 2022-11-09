@@ -2,6 +2,7 @@
     background-color: rgb(33,37,41);
     padding: 20px;
     border-radius: 6px;
+    margin-bottom: 15px;
 }
 .review-user {
     display: flex;

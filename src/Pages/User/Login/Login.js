@@ -1,10 +1,12 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import dentist from '../../../assets/person/dentist.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../utilities/useTitle';
+import { toast } from 'react-toastify';
+
 
 
 const Login = () => {
@@ -13,6 +15,11 @@ const Login = () => {
 
     // Get Method From Context
     const {logInWithEmail, googleProviderLogIn} = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     // Google LogIn Provider
     const googleProvider = new GoogleAuthProvider();
@@ -31,7 +38,20 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            alert('Log In SuccessFull');
+            
+            // Display SuccessFul Toast
+            toast.success('Log in Successful.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
+
+            navigate(from, {replace: true});
         })
         .catch(err => console.error(err));
     }
@@ -42,7 +62,20 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            alert('Log In SuccessFull');
+            
+            // Display SuccessFull Toast
+            toast.success('Log in Successful.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
+
+            navigate(from, {replace: true});
         })
         .catch(err => console.error(err));
     }

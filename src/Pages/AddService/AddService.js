@@ -1,5 +1,7 @@
 import React from 'react';
 import useTitle from '../../utilities/useTitle';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
     // Dynamic Title
@@ -10,12 +12,15 @@ const AddService = () => {
         e.preventDefault();
 
         const form = e.target;
+
+        // Get Form Data
         const title = form.title.value;
         const img = form.photo_url.value;
         const rating = form.rating.value;
         const price = form.price.value;
         const description = form.description.value;
 
+        // Create Object For send data to server
         const service = {
             title,
             img,
@@ -24,6 +29,7 @@ const AddService = () => {
             description
         }
 
+        // Send data to server by post method
         fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
@@ -35,7 +41,18 @@ const AddService = () => {
         .then(data => {
             if(data.acknowledged){
                 form.reset();
-                alert('Service Added successfully.')
+                
+                // Display SuccessFull Toast
+                toast.success('Service Added successfully.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                })
             }
         })
         .catch(err => console.error(err));
