@@ -30,7 +30,7 @@ code {
   font-weight: 600;
   letter-spacing: 1px;
 }
-.primary_btn_custom:hover{
+.active, .primary_btn_custom:hover{
   color: #fff;
   border-color: #37474F;
   background-color: #181818;
