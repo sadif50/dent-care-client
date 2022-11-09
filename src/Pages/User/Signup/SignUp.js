@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import dentist from '../../../assets/person/dentist.png';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 const SignUp = () => {
+    // Get Method from Context
+    const { createUserWithEmail, updateInfo } = useContext(AuthContext);
+
+    const handleSignUp = e => {
+        // Prevent form from refresh
+        e.preventDefault();
+
+        const form = e.target;
+        // Get The Form Data
+        const name = form.name.value;
+        const photo_url = form.photo_url.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        // Create User With Email And Password
+        createUserWithEmail(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+
+            // Set Display Name And Photo Url
+            updateInfo(name, photo_url)
+            .then(()=>{
+                alert('Profile Created Successfully!');
+            })
+            .catch(err=>{
+                alert(err.message);
+            });
+            form.reset();
+        })
+        .catch(err => console.error(err));
+    }
     return (
         <div className='container my-5'>
             <div className='bg-dark py-5 px-4 rounded'>
@@ -13,7 +46,7 @@ const SignUp = () => {
                     </div>
                     <div className="col-lg-6 mt-4 mt-lg-0">
                         <h2 className='mb-4 px-0 px-md-5'>Sign Up For Your Account!</h2>
-                        <form className='px-0 px-md-5'>
+                        <form className='px-0 px-md-5' onSubmit={handleSignUp}>
                             <div className='mb-2'>
                                 <label htmlFor="name" className='mb-2'>Name</label>
                                 <input className='form-control' type="name" name="name" placeholder='Your Name' id="name" required />
@@ -31,7 +64,7 @@ const SignUp = () => {
                                 <input className='form-control' type="password" name="password" placeholder='Password' id="password" required />
                             </div>
                             <div>
-                                <button className='primary_btn_custom'>SIGN UP</button>
+                                <button className='primary_btn_custom' type='submit'>SIGN UP</button>
                             </div>
                         </form>
                         <div className=' mt-4 px-0 px-md-5 fw-bold fs-5'>
