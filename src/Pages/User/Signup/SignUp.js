@@ -2,9 +2,13 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import dentist from '../../../assets/person/dentist.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../utilities/useTitle';
 
 
 const SignUp = () => {
+    // Dynamic Title
+    useTitle('Sign Up || Dent Care');
+
     // Get Method from Context
     const { createUserWithEmail, updateInfo } = useContext(AuthContext);
 

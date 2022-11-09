@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Service from '../Service/Service';
 import { PhotoProvider } from 'react-photo-view';
+import useTitle from '../../../utilities/useTitle';
 
 
 const Services = () => {
+    // Dynamic Title
+    useTitle('Services || Dent Care');
+
     const [services, setServices] = useState([]);
 
     useEffect(() => {

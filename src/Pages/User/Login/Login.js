@@ -4,9 +4,13 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import dentist from '../../../assets/person/dentist.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../utilities/useTitle';
 
 
 const Login = () => {
+    // Dynamic Title
+    useTitle('Login || Dent Care');
+
     // Get Method From Context
     const {logInWithEmail, googleProviderLogIn} = useContext(AuthContext);
 
@@ -43,7 +47,7 @@ const Login = () => {
         .catch(err => console.error(err));
     }
 
-    
+
     return (
         <div className='container my-5'>
             <div className='bg-dark py-5 px-4 rounded'>
