@@ -1,16 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import {FaEdit, FaTrash} from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import useTitle from '../../utilities/useTitle';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const MyReviews = () => {
     // Dynamic Title
     useTitle('My Reviews || Dent Care');
 
-    const {user} = useContext(AuthContext);
+    // Get user for his/her email
+    const { user } = useContext(AuthContext);
 
+    // Reviews state for store reviews
     const [reviews, setReviews] = useState([]);
 
+    // Get All reviews for this user by email
     useEffect(() => {
         fetch(`http://localhost:5000/review?email=${user?.email}`)
             .then(res => res.json())
@@ -18,7 +23,42 @@ const MyReviews = () => {
             .catch(err => console.error(err));
     }, [user?.email]);
 
-    console.log(reviews);
+    // Handle Edit the review
+    const editReview = id => {
+
+    }
+
+    // Handle delete the review
+    const deleteReview = id => {
+        // Get confirmation from user
+        const agree = window.confirm('Are you sure to delete this review?');
+        if (agree) {
+            fetch(`http://localhost:5000/review/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+
+                    // Display Delete SuccessFull Toast
+                    toast.success('Your Review Deleted Succesfully.', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    })
+
+                    // remove the deleted review from state
+                    const remaining = reviews.filter(review => review._id !== id);
+                    setReviews(remaining);
+                }
+            })
+        }
+    }
 
     return (
         <div className='container my-5'>
@@ -39,12 +79,20 @@ const MyReviews = () => {
                     <tbody>
                         {
                             reviews.map((review, index) => <tr key={review._id}>
-                                <td className='text-center'>{index+1}</td>
+                                <td className='text-center'>{index + 1}</td>
                                 <td>{review?.service_title}</td>
                                 <td>{review?.review_details}</td>
                                 <td className='text-center' width={200}>
-                                    <button className='btn btn-primary'><FaEdit/> Edit</button>&nbsp; &nbsp;
-                                    <button className='btn btn-danger'><FaTrash/> Delete</button>
+                                    <Link to={`/editReview/${review._id}`}>
+                                        <button className='btn btn-primary'>
+                                            <FaEdit /> Edit
+                                        </button>
+                                    </Link>
+                                    
+                                    &nbsp; &nbsp;
+                                    <button className='btn btn-danger' onClick={() => deleteReview(review._id)}>
+                                        <FaTrash /> Delete
+                                    </button>
                                 </td>
                             </tr>)
                         }
