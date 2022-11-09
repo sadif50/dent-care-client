@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
-const CreateReview = ({_id}) => {
+const CreateReview = ({_id, title}) => {
 
     const {user} = useContext(AuthContext);
 
@@ -17,6 +17,7 @@ const CreateReview = ({_id}) => {
 
         // Get Reviewer Info
         const service_id = _id;
+        const service_title = title;
         const reviewer = user?.displayName;
         const reviewer_email = user?.email;
         const reviewer_img = user?.photoURL;
@@ -28,6 +29,7 @@ const CreateReview = ({_id}) => {
         // Create Object For send data to server
         const review = {
             service_id,
+            service_title,
             reviewer,
             reviewer_email,
             reviewer_img,

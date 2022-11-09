@@ -41,7 +41,7 @@ const ServiceDetails = () => {
                 </div>
             </div>
 
-            {user?.uid ? <CreateReview _id={_id}></CreateReview> 
+            {user?.uid ? <CreateReview _id={_id} title={title}></CreateReview> 
                 :
                 <div>
                     <p className='text-center bg-dark p-4 rounded fw-bold fs-4'>
