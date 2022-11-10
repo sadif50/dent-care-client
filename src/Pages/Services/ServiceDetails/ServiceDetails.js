@@ -61,7 +61,7 @@ const ServiceDetails = () => {
                 form.reset();
                 
                 // Set new review to current state
-                const newReview = [...reviews, review];
+                const newReview = [review, ...reviews];
                 setReviews(newReview);
                 
                 // Display SuccessFull Toast

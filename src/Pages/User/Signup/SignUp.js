@@ -97,11 +97,11 @@ const SignUp = () => {
                             <form className='px-0 px-md-5' onSubmit={handleSignUp}>
                                 <div className='mb-2'>
                                     <label htmlFor="name" className='mb-2'>Name</label>
-                                    <input className='form-control' type="name" name="name" placeholder='Your Name' id="name" required />
+                                    <input className='form-control' type="name" name="name" placeholder='Your Name' id="name" />
                                 </div>
                                 <div className='mb-2'>
                                     <label htmlFor="photo_url" className='mb-2'>Photo Url</label>
-                                    <input className='form-control' type="photo_url" name="photo_url" placeholder='Your Photo Url' id="photo_url" required />
+                                    <input className='form-control' type="photo_url" name="photo_url" placeholder='Your Photo Url' id="photo_url" />
                                 </div>
                                 <div className='mb-2'>
                                     <label htmlFor="email" className='mb-2'>Email</label>
