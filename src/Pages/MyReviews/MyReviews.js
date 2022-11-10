@@ -23,11 +23,6 @@ const MyReviews = () => {
             .catch(err => console.error(err));
     }, [user?.email]);
 
-    // Handle Edit the review
-    const editReview = id => {
-
-    }
-
     // Handle delete the review
     const deleteReview = id => {
         // Get confirmation from user
@@ -73,6 +68,7 @@ const MyReviews = () => {
                             <th className='text-center'>SL</th>
                             <th>Service Name</th>
                             <th>Review</th>
+                            <th>Rating</th>
                             <th className='text-center'>Action</th>
                         </tr>
                     </thead>
@@ -82,6 +78,7 @@ const MyReviews = () => {
                                 <td className='text-center'>{index + 1}</td>
                                 <td>{review?.service_title}</td>
                                 <td>{review?.review_details}</td>
+                                <td>{review?.rating}</td>
                                 <td className='text-center' width={200}>
                                     <Link to={`/editReview/${review._id}`}>
                                         <button className='btn btn-primary'>
