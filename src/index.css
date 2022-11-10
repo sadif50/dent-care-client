@@ -14,7 +14,12 @@ code {
     monospace;
 }
 .primary_bg {
-  background-color: #37474F;
+  background-color: #37474F !important;
+}
+.primary_bg .accordion-button {
+  background-color: #37474F !important;
+  color: #fff;
+  font-weight: bold;
 }
 .secondary_bg {
   background-color: #633e39 !important;

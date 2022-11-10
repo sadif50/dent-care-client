@@ -17,13 +17,16 @@ const Testimonial = () => {
     return (
         <div className='my-5 py-5'>
             <div className="row">
-                <div className="col-md-6 mb-4 mb-md-0">
+                <div className="col-lg-6 mb-4 mb-lg-0">
                     <div>
-                        <h2 className='fw-bold fs-1'>What People Say</h2>
-                        <p className=''>A testimonial is an honest endorsement of your product or service that usually comes from a customer, colleague, or peer who has benefited from or experienced success as a result of the work you did for them.</p>
+                        <p className='text-danger fw-bold'>WHAT PEOPLE SAY</p>
+                        <h2 className='fw-bold fs-1 mb-3'>Testimonials</h2>
+                        <p className='w-75'>
+                        In promotion and advertising, a testimonial or show consists of a person's written or spoken statement extolling the virtue of a product. 
+                        </p>
                     </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-lg-6">
                     <Slider {...settings}>
                         <div className="testimonials">
                             <div className='review-user'>
@@ -33,7 +36,7 @@ const Testimonial = () => {
                                         <h4>S.M. Sujan</h4>
                                     </div>
                                     <p className='m-0'>
-                                        Quote testimonials are ads or artwork that display positive statements about your company from a brand evangelist or a delighted customer. The quote is usually accompanied by an image of the person being quoted to make the message more relatable to the target audience.
+                                    Thank you Dr. Mohammad for the great experience and quality work you have done on my teeth. I am usually apprehensive about needles and it was no sweat at all. In fact, I am ready for the next needle, thanks to your gentle touch. My family and I have been pleased with your professional, yet personable, service. See you soon.
                                     </p>
                                 </div>
                             </div>
@@ -46,8 +49,7 @@ const Testimonial = () => {
                                         <h4>Sadif Mostafa</h4>
                                     </div>
                                     <p className='m-0'>
-                                        Whether you like it or not, your social media channels will naturally capture customer testimonials. Social media offers instant relief for customers who have strong opinions about a product or service.
-                                        A happy customer can simply take out their phone, write an emotional review.
+                                    Dr. Mohammad is an excellent dentist. He took the time to explain every procedure He was doing. For example, when I got my teeth whitened, Dr. Mohammad was very supportive, and thorough when explaining the process. He is a professional and has a naturally lovely personality. I would recommend Dr. Mohammad to everyone. He is the best dentist I have ever had.
                                     </p>
                                 </div>
                             </div>

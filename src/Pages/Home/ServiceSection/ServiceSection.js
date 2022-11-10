@@ -27,7 +27,7 @@ const ServiceSection = () => {
                         <p className='text-danger fw-bold'>WHAT I DO</p>
                         <h2 className='fw-bold fs-1 mb-3'>My Services</h2>
                         <p className='w-75'>
-                            Nulla metus metus ullamcorper vel tincidunt sed euismod nibh Quisque volutpat condimentum velit class aptent taciti sociosqu ad litora.
+                        A dentist diagnoses and treats diseases of the teeth and the mouth. They clean your teeth, remove teeth, remove tooth decay, fill your teeth, treat gum disease and provide education on how to care for your teeth and mouth.
                         </p>
                     </div>
                 </Col>
