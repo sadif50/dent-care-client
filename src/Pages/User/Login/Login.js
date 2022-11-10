@@ -49,11 +49,25 @@ const Login = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
-            })
+            });
+
+            form.reset();
 
             navigate(from, {replace: true});
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            // Display Error Toast
+            toast.error(err.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        });
     }
 
     // Log In With Google Provider

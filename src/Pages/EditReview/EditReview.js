@@ -13,17 +13,21 @@ const EditReview = () => {
     const navigate = useNavigate();
 
     const handleEdit = e => {
+        // prevent form refresh
         e.preventDefault();
 
+        // get form data
         const form = e.target;
         const review_details = form.review_details.value;
         const rating = form.rating.value;
 
+        // create updated review object to send server
         const updateReview = {
             review_details,
             rating
         }
 
+        // Send updated data to server
         fetch(`http://localhost:5000/review/${review._id}`, {
             method: 'PATCH',
             headers: {
@@ -45,6 +49,7 @@ const EditReview = () => {
                     progress: undefined,
                     theme: "dark",
                 });
+                // navigate to My reviews
                 navigate('/myReview');
             }
         })

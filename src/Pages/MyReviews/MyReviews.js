@@ -61,7 +61,8 @@ const MyReviews = () => {
                 <h2 className='fw-bold fs-1'>All My Reviews</h2>
             </div>
             <hr className='my-5' />
-            <div className="table-responsive">
+            
+            {reviews.length>0 ? <div className="table-responsive">
                 <table className='table table-bordered text-white'>
                     <thead>
                         <tr>
@@ -96,6 +97,11 @@ const MyReviews = () => {
                     </tbody>
                 </table>
             </div>
+            :
+            <div className='py-5 px-2 bg-dark rounded'>
+                <h2 className='text-center text-danger py-5'>"No reviews were added"</h2>
+            </div>
+            }
         </div>
     );
 };

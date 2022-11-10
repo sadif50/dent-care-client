@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import dentist from '../../../assets/person/dentist.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../utilities/useTitle';
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
@@ -32,14 +33,47 @@ const SignUp = () => {
             // Set Display Name And Photo Url
             updateInfo(name, photo_url)
             .then(()=>{
-                alert('Profile Created Successfully!');
+                // Display SuccessFul Toast
+                toast.success('Profile Created Successfully!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                form.reset();
             })
             .catch(err=>{
-                alert(err.message);
+                // Display Error Toast
+                toast.error(err.message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
             });
             form.reset();
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            // Display Error Toast
+            toast.error(err.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        });
     }
     return (
         <div className='container my-5'>

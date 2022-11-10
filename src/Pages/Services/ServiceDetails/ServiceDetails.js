@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import CreateReview from '../../CreateReview/CreateReview';
 import ShowReview from '../../ShowReview/ShowReview';
 import './ServiceDetails.css';
+import { toast } from 'react-toastify';
+import Form from 'react-bootstrap/Form';
+
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
@@ -16,6 +18,67 @@ const ServiceDetails = () => {
             .then(data => setReviews(data))
             .catch(err => console.error(err));
     }, [_id]);
+
+    const handleAddReview = e => {
+        // prevent form refresh
+        e.preventDefault();
+
+        // Get Reviewer Info
+        const form = e.target;
+
+        const service_id = _id;
+        const service_title = title;
+        const reviewer = user?.displayName;
+        const reviewer_email = user?.email;
+        const reviewer_img = user?.photoURL;
+        
+        // Get Form Data
+        const review_details = form.review.value;
+        const rating = form.rating.value;
+
+        // Create Object For send data to server
+        const review = {
+            service_id,
+            service_title,
+            reviewer,
+            reviewer_email,
+            reviewer_img,
+            review_details,
+            rating
+        }
+
+        // Send data to server by post method
+        fetch('http://localhost:5000/review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                form.reset();
+                
+                // Set new review to current state
+                const newReview = [...reviews, review];
+                setReviews(newReview);
+                
+                // Display SuccessFull Toast
+                toast.success('Your Review Added Successfully.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                })
+            }
+        })
+        .catch(err => console.error(err));
+    }
 
 
     return (
@@ -41,7 +104,23 @@ const ServiceDetails = () => {
                 </div>
             </div>
 
-            {user?.uid ? <CreateReview _id={_id} title={title}></CreateReview> 
+            {user?.uid ? <div className='mt-5'>
+            <h3 className='mb-3'>Leave a Review: </h3>
+            <div className='create-review'>
+                <Form onSubmit={handleAddReview}>
+                    <Form.Group className="mb-3">
+                        <Form.Control as="textarea" name='review' placeholder="Your review here" />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='rating' placeholder="Your Rating(1-5)" max={5} min={1} />
+                    </Form.Group>
+                    <button className='primary_btn_custom' type="submit">
+                        Post Review
+                    </button>
+                </Form>
+            </div>
+        </div> 
                 :
                 <div>
                     <p className='text-center bg-dark p-4 rounded fw-bold fs-4'>
