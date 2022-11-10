@@ -1,0 +1,15 @@
+.testimonials {
+    background-color: rgb(33,37,41);
+    padding: 20px;
+    border-radius: 6px;
+}
+.slick-prev {
+    top: -15px;
+    right: 25px;
+    left: auto;
+}
+.slick-next {
+    top: -15px;
+    right: 0;
+    left: auto;
+}

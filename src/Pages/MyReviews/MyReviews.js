@@ -26,7 +26,17 @@ const MyReviews = () => {
         })
             .then(res => {
                 if(res.status === 401 || res.status === 403){
-                    logOut();
+                    // Display Unauthorized Toast
+                    toast.error('Unauthorized access! Authorized access available for email/password login.', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
                 }
                 return res.json();
             })
