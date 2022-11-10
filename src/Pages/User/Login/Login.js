@@ -15,7 +15,7 @@ const Login = () => {
     useTitle('Login || Dent Care');
 
     // Get Method From Context
-    const {logInWithEmail, googleProviderLogIn} = useContext(AuthContext);
+    const { logInWithEmail, googleProviderLogIn } = useContext(AuthContext);
     const [loader, setLoader] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -37,86 +37,101 @@ const Login = () => {
 
         // Log In With Email And Password
         logInWithEmail(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            
-            // Display SuccessFul Toast
-            toast.success('Log in Successful.', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+                // Get JWT Token
+                const currentUser = {
+                    email: user.email,
+                }
+                fetch('https://dent-care-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // Set Token to Localstorage
+                    localStorage.setItem('dent-care-token', data.token);
+                    // Display SuccessFul Toast
+                    toast.success('Log in Successful.', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+
+                    form.reset();
+                    setLoader(false);
+                    navigate(from, { replace: true });
+                });
+            })
+            .catch(err => {
+                // Display Error Toast
+                toast.error(err.message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setLoader(false);
             });
-
-            form.reset();
-
-            setLoader(false);
-
-            navigate(from, {replace: true});
-        })
-        .catch(err => {
-            // Display Error Toast
-            toast.error(err.message, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-            setLoader(false);
-        });
     }
 
     // Log In With Google Provider
     const logInWithGoogle = () => {
         setLoader(true);
         googleProviderLogIn(googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            
-            // Display SuccessFull Toast
-            toast.success('Log in Successful.', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            .then(result => {
+                const user = result.user;
+                console.log(user);
 
-            setLoader(false);
-            navigate(from, {replace: true});
-        })
-        .catch(err => {
-            // Display Error Toast
-            toast.error(err.message, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
+                // Display SuccessFull Toast
+                toast.success('Log in Successful.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+
+                setLoader(false);
+                navigate(from, { replace: true });
+            })
+            .catch(err => {
+                // Display Error Toast
+                toast.error(err.message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setLoader(false);
             });
-            setLoader(false);
-        });
     }
 
-    if(loader){
-        return <Spiner/>
-    }else {
+    if (loader) {
+        return <Spiner />
+    } else {
         return (
             <div className='container my-5'>
                 <div className='bg-dark py-5 px-4 rounded'>

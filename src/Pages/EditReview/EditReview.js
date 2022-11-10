@@ -28,7 +28,7 @@ const EditReview = () => {
         }
 
         // Send updated data to server
-        fetch(`http://localhost:5000/review/${review._id}`, {
+        fetch(`https://dent-care-server.vercel.app/review/${review._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

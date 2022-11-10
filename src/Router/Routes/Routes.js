@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({params}) => fetch(`https://dent-care-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/addService',
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: 'editReview/:id',
                 element: <EditReview></EditReview>,
-                loader: ({params})=> fetch(`http://localhost:5000/review_id/${params.id}`)
+                loader: ({params})=> fetch(`https://dent-care-server.vercel.app/review_id/${params.id}`)
             },
             {
                 path: '/signup',

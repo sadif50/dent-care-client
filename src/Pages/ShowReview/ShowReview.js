@@ -3,7 +3,6 @@ import React from 'react';
 const ShowReview = ({ review }) => {
     const {reviewer, reviewer_img, review_details, rating} = review;
 
-    console.log(reviewer_img);
     return (
         <div className="review">
             <div className='review-user'>
