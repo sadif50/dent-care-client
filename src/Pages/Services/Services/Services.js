@@ -10,9 +10,11 @@ const Services = () => {
     // Dynamic Title
     useTitle('Services || Dent Care');
 
+    // States
     const [services, setServices] = useState([]);
     const [loader, setLoader] = useState(true);
 
+    // Load All Services From Server
     useEffect(() => {
         fetch('https://dent-care-server.vercel.app/services')
             .then(res => res.json())

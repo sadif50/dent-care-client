@@ -17,9 +17,12 @@ const Login = () => {
     // Get Method From Context
     const { logInWithEmail, googleProviderLogIn } = useContext(AuthContext);
     const [loader, setLoader] = useState(false);
+
+    // React Router Hooks
     const location = useLocation();
     const navigate = useNavigate();
 
+    // Get previous path from private route
     const from = location.state?.from?.pathname || '/';
 
     // Google LogIn Provider
@@ -54,9 +57,9 @@ const Login = () => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     // Set Token to Localstorage
                     localStorage.setItem('dent-care-token', data.token);
+                    
                     // Display SuccessFul Toast
                     toast.success('Log in Successful.', {
                         position: "top-center",

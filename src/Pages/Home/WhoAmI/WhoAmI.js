@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import dentist from '../../../assets/person/dentist.png';
 import './WhoAmI.css';
 
-
-
 const WhoAmI = () => {
     return (
         <div className="bg-dark rounded">

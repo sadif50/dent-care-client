@@ -2,13 +2,14 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import useTitle from '../../utilities/useTitle';
+import useTitle from '../../../utilities/useTitle';
 import { toast } from 'react-toastify';
 
 const EditReview = () => {
     // Dynamic Title
     useTitle('Update Review || Dent Care');
 
+    // React Router Hooks
     const review = useLoaderData();
     const navigate = useNavigate();
 
@@ -53,11 +54,6 @@ const EditReview = () => {
                 navigate('/myReview');
             }
         })
-
-
-
-        console.log(updateReview)
-
     }
 
     return (

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import useTitle from '../../utilities/useTitle';
+import useTitle from '../../../utilities/useTitle';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import Spiner from '../Shared/Spiner/Spiner';
+import Spiner from '../../Shared/Spiner/Spiner';
 
 const MyReviews = () => {
     // Dynamic Title
@@ -17,7 +17,7 @@ const MyReviews = () => {
     const [reviews, setReviews] = useState([]);
     const [loader, setLoader] = useState(true);
 
-    // Get All reviews for this user by email
+    // Get All reviews for this user by email With JWT Verify
     useEffect(() => {
         fetch(`https://dent-care-server.vercel.app/review?email=${user?.email}`, {
             headers: {
@@ -25,9 +25,10 @@ const MyReviews = () => {
             }
         })
             .then(res => {
+                // Check Server Status
                 if(res.status === 401 || res.status === 403){
                     // Display Unauthorized Toast
-                    toast.error('Unauthorized access! Authorized access available for email/password login.', {
+                    toast.error('Loged Out! Authorized access available for login with email/password.', {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -37,6 +38,9 @@ const MyReviews = () => {
                         progress: undefined,
                         theme: "dark",
                     });
+                    
+                    // Log out user by force for unauthorized token
+                    logOut();
                 }
                 return res.json();
             })

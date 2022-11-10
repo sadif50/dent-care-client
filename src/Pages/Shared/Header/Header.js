@@ -28,7 +28,7 @@ const Header = () => {
                         {
                             user?.uid ? <>
                                 <NavLink className='primary_btn_custom' to='/myReview'>My Reviews</NavLink>
-                                <NavLink className='primary_btn_custom' to='/addService'>Add Services</NavLink>
+                                <NavLink className='primary_btn_custom' to='/addService'>Add Service</NavLink>
                                 <Link className='primary_btn_custom' onClick={logOut}>Log Out</Link>
                             </> : <>
                                 <NavLink className='primary_btn_custom' to='/signup'>Sign Up</NavLink>

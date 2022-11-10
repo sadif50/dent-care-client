@@ -11,6 +11,7 @@ import { PhotoProvider } from 'react-photo-view';
 const ServiceSection = () => {
     const [services, setServices] = useState([]);
 
+    // Load only three last posted data by sending limit with query
     useEffect(() => {
         fetch('https://dent-care-server.vercel.app/services?limit=3')
             .then(res => res.json())

@@ -10,9 +10,11 @@ const PrivateRoute = ({children}) => {
         return <h2>Loading...</h2>
     }
 
+    // Check user avility
     if(user){
         return children;
     }
+    // Navigate to log in
     return <Navigate to='/login' state={{from: location}} replace></Navigate>
     
 };

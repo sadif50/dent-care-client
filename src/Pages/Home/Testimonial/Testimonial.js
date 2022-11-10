@@ -3,9 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Testimonial.css';
+import testimonial_photo from '../../../assets/person/user.jpg';
 
 const Testimonial = () => {
 
+    // Slider Options
     const settings = {
         infinite: true,
         speed: 500,
@@ -30,7 +32,7 @@ const Testimonial = () => {
                     <Slider {...settings}>
                         <div className="testimonials">
                             <div className='review-user'>
-                                <img src='https://lh3.googleusercontent.com/a/ALm5wu0IU6ggPA054Wk07bPeAE5KlIdcEIRypoDfO2FNkA=s96-c' alt="" />
+                                <img src={testimonial_photo} alt="" />
                                 <div>
                                     <div className='mb-3'>
                                         <h4>S.M. Sujan</h4>
@@ -43,7 +45,7 @@ const Testimonial = () => {
                         </div>
                         <div className="testimonials">
                             <div className='review-user'>
-                                <img src='https://lh3.googleusercontent.com/a/ALm5wu0IU6ggPA054Wk07bPeAE5KlIdcEIRypoDfO2FNkA=s96-c' alt="" />
+                                <img src={testimonial_photo} alt="" />
                                 <div>
                                     <div className='mb-3'>
                                         <h4>Sadif Mostafa</h4>

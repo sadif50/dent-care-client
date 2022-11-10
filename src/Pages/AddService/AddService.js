@@ -7,13 +7,14 @@ const AddService = () => {
     // Dynamic Title
     useTitle('Add Service || Dent Care');
 
+    // Add Service Function
     const handleAddService = e => {
         // prevent form refresh
         e.preventDefault();
 
+        // Get Form Data
         const form = e.target;
 
-        // Get Form Data
         const title = form.title.value;
         const img = form.photo_url.value;
         const rating = form.rating.value;

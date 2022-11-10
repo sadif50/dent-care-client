@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import ShowReview from '../../ShowReview/ShowReview';
+import ShowReview from '../../Review/ShowReview/ShowReview';
 import './ServiceDetails.css';
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
@@ -19,13 +19,12 @@ const ServiceDetails = () => {
             .catch(err => console.error(err));
     }, [_id]);
 
+    // Create Review
     const handleAddReview = e => {
         // prevent form refresh
         e.preventDefault();
 
-        // Get Reviewer Info
-        const form = e.target;
-
+        // Get Reviewer Info from user
         const service_id = _id;
         const service_title = title;
         const reviewer = user?.displayName;
@@ -33,6 +32,7 @@ const ServiceDetails = () => {
         const reviewer_img = user?.photoURL;
         
         // Get Form Data
+        const form = e.target;
         const review_details = form.review.value;
         const rating = form.rating.value;
 
